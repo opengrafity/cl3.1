@@ -50,5 +50,8 @@ public class Main {
             }
         }
         System.out.println(school);
+
+        Student obj = new Student();
+        obj.id = 10;
     }
 }

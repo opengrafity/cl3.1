@@ -12,5 +12,8 @@ public class TestMain {
         name = "I love "+country;
         name = ClassRoom.titleCase(name);
         System.out.println(name);
+
+        Student std = null;
+        std.name = "";
     }
 }
