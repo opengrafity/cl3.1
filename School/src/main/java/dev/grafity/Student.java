@@ -1,6 +1,6 @@
 package dev.grafity;
 
-public class Student {
+public abstract class Student {
     public int id;
 
     public String name = "Student Name";
@@ -15,9 +15,7 @@ public class Student {
         System.out.println("From Super:"+name);
     }
 
-    public float getTotalFee(){
-        return fees+(fees*0.05F);
-    }
+    public abstract float getTotalFee();
 
     @Override
     public String toString() {

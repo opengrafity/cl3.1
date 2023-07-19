@@ -7,7 +7,7 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Scanner sc  = new Scanner(System.in);
+        /*Scanner sc  = new Scanner(System.in);
         int choice = -1;
         int classRoomNo = 0;
         Student stdObj = null;
@@ -52,6 +52,6 @@ public class Main {
         System.out.println(school);
 
         Student obj = new Student();
-        obj.id = 10;
+        obj.id = 10;*/
     }
 }
