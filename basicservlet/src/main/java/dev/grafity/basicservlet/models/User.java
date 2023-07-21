@@ -9,6 +9,7 @@ public class User {
 	private String address;
 	private String city;
 	private String pincode;
+	private String registeredBy; 
 	public int getUserId() {
 		return userId;
 	}
@@ -57,11 +58,18 @@ public class User {
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
+	
+	public String getRegisteredBy() {
+		return registeredBy;
+	}
+	public void setRegisteredBy(String registeredBy) {
+		this.registeredBy = registeredBy;
+	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", gender=" + gender
 				+ ", mobileNumber=" + mobileNumber + ", address=" + address + ", city=" + city + ", pincode=" + pincode
-				+ "]";
+				+ ", registeredBy=" + registeredBy + "]";
 	}
 	
 	

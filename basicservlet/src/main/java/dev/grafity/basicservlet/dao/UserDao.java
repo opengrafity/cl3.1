@@ -32,8 +32,8 @@ public class UserDao {
 	public boolean saveUser(User user) throws ClassNotFoundException, SQLException {
 		Class.forName("oracle.jdbc.OracleDriver");
 		Connection conn = DriverManager.getConnection(ORACLE_CONNECTIO_STR, "SYSTEM", "Grafity123$");
-		PreparedStatement stmt = conn.prepareStatement("INSERT INTO GRAFITY_USERS(USERID,USERNAME,PASSWORD,GENDER,MOBILENUMEBR,ADDRESS,CITY,PINCODE) "
-														+ "VALUES (?,?,?,?,?,?,?,?)");
+		PreparedStatement stmt = conn.prepareStatement("INSERT INTO GRAFITY_USERS(USERID,USERNAME,PASSWORD,GENDER,MOBILENUMEBR,ADDRESS,CITY,PINCODE,REGISTERED_BY) "
+														+ "VALUES (?,?,?,?,?,?,?,?,?)");
 		
 		stmt.setInt(1, user.getUserId());
 		stmt.setString(2, user.getUsername());
@@ -43,6 +43,7 @@ public class UserDao {
 		stmt.setString(6, user.getAddress());
 		stmt.setString(7, user.getCity());
 		stmt.setString(8, user.getPincode());
+		stmt.setString(9, user.getRegisteredBy());
 		
 		int rowsAffected = stmt.executeUpdate();
 		
