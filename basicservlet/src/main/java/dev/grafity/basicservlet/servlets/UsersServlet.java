@@ -24,6 +24,7 @@ public class UsersServlet extends HttpServlet {
 		int userId = Integer.parseInt(request.getParameter("user_id"));
 		PrintWriter out = response.getWriter();
 		UserDao dao = new UserDao();
+		
 		try{
 			User user = dao.getUser(userId);		
 			out.printf("<html>	\r\n"

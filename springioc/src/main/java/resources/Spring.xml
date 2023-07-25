@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+           ">
+
+  <bean id="dbConnector" name="dbConnector" class="dev.grafity.springioc.services.DevDBConnector">
+    
+  </bean>
+
+  <bean id="securityConfig" name="securityConfig" class="dev.grafity.springioc.services.ProdSecurityConfig">
+    
+  </bean>
+  
+  <util:map id="taxSlabs" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Double">
+  	<entry key="sal&lt;10L" value="5.0"></entry>
+  	<entry key="10L&lt;sal&lt;20L" value="15.0"></entry>
+  	<entry key="20L&lt;sal&lt;30L" value="25.0"></entry>
+  </util:map>
+  
+  <bean id="taxCalculator" name="taxCalculator" class="dev.grafity.springioc.services.OldTaxCalculator">
+    <property name="taxPercentages" ref="taxSlabs"></property>
+  </bean>
+  
+  <bean id="itrFiler" name="itrFiler" class="dev.grafity.springioc.ITRFiler" autowire="byName">
+    <!-- <constructor-arg index="0" ref="taxCalculator"/>
+    <constructor-arg index="1" ref="devDB"/>
+    <constructor-arg index="2" ref="devSecure"/> -->
+  </bean>
+ 
+
+  <!-- more bean definitions go here -->
+
+</beans>
