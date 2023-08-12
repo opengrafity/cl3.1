@@ -1,14 +1,17 @@
 package in.mahaan.inventory.model;
 
+import java.math.BigDecimal;
+
 public class Product {
-	private int id; 
+	private String id; 
 	private String name;
 	private String category;
-	private double price;
-	public int getId() {
+	private BigDecimal price;
+	
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -23,10 +26,11 @@ public class Product {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public double getPrice() {
+	
+	public BigDecimal getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	@Override
