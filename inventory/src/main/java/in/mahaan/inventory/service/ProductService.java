@@ -1,5 +1,6 @@
 package in.mahaan.inventory.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,19 @@ public class ProductService {
 		String prodId = UUID.randomUUID().toString();
 		product.setId(prodId);
 		int rowsUpdated = prodRepository.saveProduct(product);
-		return rowsUpdated > 0?true:false;
-		
+		return rowsUpdated > 0?true:false;		
 	}  
+	
+	public List<Product> getAllProducts(){
+		return prodRepository.getAllProducts();
+	}
+	
+	public List<Product> getProductsByCategory(String category){
+		if(category==null || category.isEmpty() || category.equalsIgnoreCase("all")) {
+			return prodRepository.getAllProducts();
+		}
+		return prodRepository.getProductsByCategory(category);
+	}
+	
+	
 }
