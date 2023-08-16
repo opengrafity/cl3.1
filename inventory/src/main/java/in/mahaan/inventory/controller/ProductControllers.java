@@ -3,6 +3,7 @@ package in.mahaan.inventory.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import in.mahaan.inventory.service.ProductService;
 @RequestMapping("/product")
 public class ProductControllers {
 	@Autowired
+	@Qualifier("prodJpaService")
 	private ProductService prodService;
 	@RequestMapping("register")
 	public String register(@ModelAttribute("product") Product product) {

@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import in.mahaan.inventory.model.Product;
-import in.mahaan.inventory.service.ProductService;
+import in.mahaan.inventory.service.ProductJdbcService;
 
 @Controller
 public class ViewController {
 	@Autowired
-	private ProductService prodService;
+	private ProductJdbcService prodService;
 	@RequestMapping("/index")		
 	public String index() {
 		return "index";
