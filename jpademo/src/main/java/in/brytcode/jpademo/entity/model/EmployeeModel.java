@@ -1,37 +1,19 @@
-package in.brytcode.jpademo.entity;
-
+package in.brytcode.jpademo.entity.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import in.brytcode.jpademo.entity.Aadhar;
+import in.brytcode.jpademo.entity.ODC;
 
-
-@Entity
-public class Employee {
-	@Id
+public class EmployeeModel {
 	private int empId;
 	private String empName;
 	private Date doj;
-	@OneToOne
-	@JoinColumn(name = "aadharId")
 	private Aadhar aadhar;
-	
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "emp")
-	private List<Vehical> vehicals = new ArrayList<>();
-	
-	@ManyToOne
-	@JoinColumn(name="odc_number")
-	private ODC odc;	
-	
+	private List<VehicalModel> vehicals = new ArrayList<>();
+	private ODC odc;
 	public int getEmpId() {
 		return empId;
 	}
@@ -49,21 +31,19 @@ public class Employee {
 	}
 	public void setDoj(Date doj) {
 		this.doj = doj;
-	}	
+	}
 	public Aadhar getAadhar() {
 		return aadhar;
 	}
 	public void setAadhar(Aadhar aadhar) {
 		this.aadhar = aadhar;
 	}
-	
-	public List<Vehical> getVehicals() {
+	public List<VehicalModel> getVehicals() {
 		return vehicals;
 	}
-	public void setVehicals(List<Vehical> vehicals) {
+	public void setVehicals(List<VehicalModel> vehicals) {
 		this.vehicals = vehicals;
 	}
-	
 	public ODC getOdc() {
 		return odc;
 	}
@@ -72,8 +52,8 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", empName=" + empName + ", doj=" + doj + ", aadhar=" + aadhar + "]";
+		return "EmployeeModel [empId=" + empId + ", empName=" + empName + ", doj=" + doj + ", aadhar=" + aadhar
+				+ ", vehicals=" + vehicals + ", odc=" + odc + "]";
 	}
-	
 	
 }
