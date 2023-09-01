@@ -9,6 +9,8 @@ import in.brytcode.reservnxt.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/hotels")
 public class HotelController {
@@ -23,5 +25,9 @@ public class HotelController {
     @PostMapping("/{hotelId}/rooms")
     public HotelRoom addHotelRoom(@RequestBody HotelRoom hotelRoom, @PathVariable("hotelId") int hotelId){
         return hotelRoomService.addHotelRoom(hotelRoom, hotelId);
+    }
+    @GetMapping("/roomtype/{roomTypeId}")
+    public List<Hotel> getHotels(@PathVariable("roomTypeId") Integer roomTypeId){
+        return hotelService.getHotelsByRoomType(roomTypeId);
     }
 }
