@@ -33,6 +33,7 @@ public class ApiSecurityConfig {
                 .build();
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager(user);
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        jdbcUserDetailsManager.setEnableGroups(true);
         userDetailsManager.createUser(user2);
         return jdbcUserDetailsManager;
     }
@@ -46,7 +47,7 @@ public class ApiSecurityConfig {
         http.authorizeHttpRequests(
                         (authorize) -> authorize
                                             .antMatchers("/hotels").authenticated()
-                                            .antMatchers("/roomtypes").hasAuthority("ADMIN")
+                                            .antMatchers("/roomtypes").hasAuthority("PROCESS_PAYROLL")
                                             .antMatchers("/**").permitAll())
 
                 .httpBasic(Customizer.withDefaults())
