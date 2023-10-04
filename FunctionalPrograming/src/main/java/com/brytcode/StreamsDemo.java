@@ -2,8 +2,7 @@ package com.brytcode;
 
 import com.brytcode.model.Student;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -46,7 +45,7 @@ public class StreamsDemo {
         students.add(new Student(9, "Rajani", 9, "F", "5th"));
         students.add(new Student(10, "Bhavya", 8, "F", "4th"));
 
-            long count = students
+          /*  long count = students
                 .stream()
                 .filter(s->"M".equals(s.getGender()))
                 .map(s->{
@@ -55,8 +54,30 @@ public class StreamsDemo {
                 .filter(s->s.startsWith("R"))
                 .count();
                 //.forEach(System.out::println);
+*/
 
-        System.out.println(count);
+        //students.stream().sorted((one,two)->one.getName().compareTo(two.getName())).forEach(System.out::println);
+        students.stream().sorted(Comparator.<Student, String> comparing(str->str.getName()).reversed()).forEach(System.out::println);
+/*
+        Stream.of("John", "Mary", "David", "Sarah", "Michael",
+                "Emily", "Robert", "Jennifer", "William", "Linda",
+                "Joseph", "Susan", "James", "Karen", "Charles",
+                "Nancy", "Thomas", "Lisa", "Daniel","Daniel", "Betty")
+                .filter(str->str.length()>5)
+                *//*.flatMap(str->{
+                    List<Character> chars = new ArrayList<>();
+                    for(Character ch:str.toCharArray()){
+                        chars.add(ch);
+                    }
+                    return chars.stream();
+                })*//*
+                .distinct()
+                .sorted()
+                .skip(2)
+                .forEach(System.out::println);*/
+
+
 
     }
 }
+

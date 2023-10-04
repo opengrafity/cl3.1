@@ -1,6 +1,6 @@
 package com.brytcode.model;
 
-public class Student {
+public class Student implements Comparable<Student>{
     private int studentId;
     private String name;
     private int age;
@@ -67,5 +67,10 @@ public class Student {
                 ", gender='" + gender + '\'' +
                 ", className='" + className + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student std) {
+        return Integer.compare(this.age,std.age);
     }
 }
