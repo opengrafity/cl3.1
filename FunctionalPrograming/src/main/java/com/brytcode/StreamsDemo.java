@@ -5,6 +5,7 @@ import com.brytcode.model.Student;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 class AgeFilter implements Predicate<Integer>{
     @Override
@@ -43,7 +44,14 @@ public class StreamsDemo {
         students.add(new Student(7, "Keerthi", 15, "F", "11th"));
         students.add(new Student(8, "Latha", 8, "F", "4th"));
         students.add(new Student(9, "Rajani", 9, "F", "5th"));
-        students.add(new Student(10, "Bhavya", 8, "F", "4th"));
+        students.add(new Student(10, "Rajani", 8, "F", "4th"));
+
+        List<String> stdNames = new ArrayList<>();
+        students.stream().map(std->std.getName()).distinct().forEach(s->stdNames.add(s));
+        Set<String> names = students.stream().map(std->std.getName()).collect(Collectors.toSet());
+        Map<String, Integer> stds = students.stream().collect(Collectors.toMap(std->std.getName(),std->std.getAge(),(oldValue,newValue)->newValue));
+        Map<String,List<Student>> stdsByClass = students.stream().collect(Collectors.groupingBy(std->std.getClassName()));
+        System.out.println(stdsByClass);
 
           /*  long count = students
                 .stream()
@@ -57,7 +65,7 @@ public class StreamsDemo {
 */
 
         //students.stream().sorted((one,two)->one.getName().compareTo(two.getName())).forEach(System.out::println);
-        students.stream().sorted(Comparator.<Student, String> comparing(str->str.getName()).reversed()).forEach(System.out::println);
+      //  students.stream().sorted(Comparator.<Student, String> comparing(str->str.getName()).reversed()).forEach(System.out::println);
 /*
         Stream.of("John", "Mary", "David", "Sarah", "Michael",
                 "Emily", "Robert", "Jennifer", "William", "Linda",
