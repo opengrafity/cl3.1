@@ -9,6 +9,12 @@ spring:
                 locator:
                     enabled: true
                     lower-case-service-id: true
+            routes:
+                -   id: empbyid
+                    uri: lb://welcomeservice
+                    predicates:
+                        - Path=/employee/**
+                        - Method=GET
 eureka:
     client:
         service-url:
