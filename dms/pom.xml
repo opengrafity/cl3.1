@@ -7,6 +7,13 @@
     <groupId>com.brytcode</groupId>
     <artifactId>dms</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dmsdiscovery</module>
+        <module>dmsgateway</module>
+        <module>donorengine</module>
+        <module>orgengine</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

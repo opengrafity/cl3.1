@@ -1,0 +1,36 @@
+services:
+  dmsdiscovery:
+    build: dmsdiscovery
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+  dmsgateway:
+    build: dmsgateway
+    mem_limit: 512m
+    ports:
+      - "9091:9091"
+
+    environment:
+      - EUREKA_URI=http://dmsdiscovery:8080/eureka
+  orgengine:
+    build: orgengine
+    mem_limit: 512m
+    ports:
+      - "9092:9092"
+    environment:
+      - EUREKA_URI=http://dmsdiscovery:8080/eureka
+  donorengine:    
+    build: donorengine
+    mem_limit: 512m
+    ports:
+      - "9093:9093"
+
+    environment:
+      - EUREKA_URI=http://dmsdiscovery:8080/eureka
+  postgres:
+    image: postgres:11.21-bullseye
+    mem_limit: 512m
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=Open123$

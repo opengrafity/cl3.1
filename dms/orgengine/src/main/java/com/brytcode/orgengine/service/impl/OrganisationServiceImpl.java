@@ -24,6 +24,9 @@ public class OrganisationServiceImpl implements OrganisationService {
     public Organisation createOrganisation(Organisation orgModel) {
         com.brytcode.orgengine.entity.Organisation orgEntity = new com.brytcode.orgengine.entity.Organisation();
         BeanUtils.copyProperties(orgModel,orgEntity);
+        com.brytcode.orgengine.entity.OrganisationType orgType = new com.brytcode.orgengine.entity.OrganisationType();
+        BeanUtils.copyProperties(orgModel.getOrgType(),orgType);
+        orgEntity.setOrgType(orgType);
         orgEntity = orgRepo.save(orgEntity);
         BeanUtils.copyProperties(orgEntity,orgModel);
         return orgModel;
